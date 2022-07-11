@@ -1,0 +1,99 @@
+---
+title: "Untitled"
+author: "Masumbuko Semba"
+date: '2022-06-20'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+p2data <- "https://raw.githubusercontent.com/datavizpyr/data/master/Emmy_awards_summary_tidytuesday.tsv"
+stream_data <- readr::read_tsv(p2data)
+```
+
+```{r}
+require(tidyverse)
+require(gt)
+require(gtExtras)
+```
+
+```{r}
+stream_data %>% 
+  gt()
+```
+```{r}
+stream_data %>% 
+  gt() %>% 
+  gtExtras::gt_plt_bullet(column = Nominee, target = Winner)
+```
+
+```{r}
+stream_data %>% 
+  gt() %>% 
+  gtExtras::gt_plt_bullet(column = Nominee, target = Winner) %>% 
+  gtExtras::gt_fa_column(column = type)
+```
+
+
+
+
+```{r}
+
+stream_data %>% 
+  gt() %>% 
+  gtExtras::gt_plt_bullet(column = Nominee, target = Winner) %>% 
+  gtExtras::gt_fa_column(column = type) %>% 
+  gtExtras::gt_theme_nytimes()
+
+```
+
+
+
+
+```{r}
+
+stream_data %>% 
+  add_row(distributor = "IMS", type = "fish", Ratio = 0.25, Nominee = 145, Winner = 59) %>% 
+  gt() %>% 
+  gtExtras::gt_plt_bullet(column = Nominee, target = Winner) %>% 
+  gtExtras::gt_fa_column(column = type) %>% 
+  gtExtras::gt_theme_nytimes() %>% 
+  fmt_symbol_first(column = Ratio, suffix = "%", 
+                   decimals = 1, scale_by = 100)
+
+```
+
+
+```{r}
+
+stream_data %>% 
+  add_row(distributor = "IMS", type = "fish", Ratio = 0.25, Nominee = 145, Winner = 59) %>% 
+  gt() %>% 
+  gtExtras::gt_plt_bullet(column = Nominee, target = Winner) %>% 
+  gtExtras::gt_fa_column(column = type) %>% 
+  gtExtras::gt_theme_nytimes() %>% 
+  fmt_symbol_first(column = Ratio, suffix = "%", 
+                   decimals = 1, scale_by = 100) %>% 
+  gt_highlight_rows(
+    rows = c(3,8,9), 
+    fill = "lightgrey",
+    bold_target_only = TRUE,
+    target_col = distributor
+    )
+```
+
+```{r}
+stream_data %>% 
+  add_row(distributor = "IMS", type = "fish", Ratio = 0.25, Nominee = 145, Winner = 59) %>% 
+  gt() %>% 
+  gtExtras::gt_plt_bullet(column = Nominee, target = Winner) %>% 
+  gtExtras::gt_fa_column(column = type) %>% 
+  gtExtras::gt_theme_nytimes() %>% 
+  gtExtras::fmt_symbol_first(column = Ratio, suffix = "%", 
+                   decimals = 1, scale_by = 100) %>% 
+  gtExtras::gt_color_rows(columns = Ratio,palette = "ggsci::blue_material")
+```
+
