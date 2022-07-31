@@ -1,0 +1,26 @@
+---
+authorbox: false
+date: "2022-08-31"
+menu: main
+sidebar: false
+title: Websites
+---
+This page is dedicated to share some of the the website that I developed using blogdown. Some blog entail personal stories and work while other blogs present some of the projects works that I was involved. You can dive at each blog by clicking the link above the iframe of a particular project. You are free to ask and share them to your colleagues. 
+
+
+## [The Ocean Acidification Project](https://oa-tanzania.netlify.app/)
+<iframe class="shiny" src="https://oa-tanzania.netlify.app/" style = "height: 500px; width: 1000px"></iframe>
+
+
+## [The SAPPHIRE Project](https://sapphire-tz.netlify.app/)
+<iframe class="shiny" src="https://sapphire-tz.netlify.app/" style = "height: 500px; width: 1000px"></iframe>
+
+
+## [The Nyaka Website](https://nyaka.netlify.app/)
+<iframe class="shiny" src="https://nyaka.netlify.app/" style = "height: 500px; width: 1000px"></iframe>
+
+## [The Marine and Coastal Blog](https://semba-blog.netlify.app/post/)
+<iframe class="shiny" src="https://semba-blog.netlify.app/post/" style = "height: 500px; width: 1000px"></iframe>
+
+
+
