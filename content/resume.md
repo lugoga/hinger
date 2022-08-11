@@ -22,13 +22,15 @@ title: Resume
 
 ### Extracurricular Activities
 
-**Writer**: Write online and digital books on data analysis and programming. 
++ **Writer**: Write online and digital books on data analysis and programming. 
 
-**Designing graphic**:  Design graphics and typeset books
++ **Designing graphic**:  Design graphics and typeset books
 
-**Blogger**: blog about coding using python, Matlab and R programming languages for data sciences and analysis. The blog is found at this [link](https://semba-blog.netlify.app/)
++ **Blogger**: blog about coding using python, Matlab and R programming languages for data sciences and analysis. The blog is found at this [link](https://semba-blog.netlify.app/)
 
-**Reviewer**: PLOSONE
++ [Ng'ara blog](https://lugoga.github.io/ngara/) developed with [**quarto**](https://quarto.org/)---a new open-source scientific and technical publishing system, building on ten years of what RStudio learned from RMarkdown, and extends these features beyond R. 
+
++ **Reviewer**: PLOSONE
 
 
 ### Interest
