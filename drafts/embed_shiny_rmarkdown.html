@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Antoine Soetewey">
+<meta name="dcterms.date" content="2020-01-07">
+
+<title>How to embed a Shiny app in blogdown</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="embed_shiny_rmarkdown_files/libs/clipboard/clipboard.min.js"></script>
+<script src="embed_shiny_rmarkdown_files/libs/quarto-html/quarto.js"></script>
+<script src="embed_shiny_rmarkdown_files/libs/quarto-html/popper.min.js"></script>
+<script src="embed_shiny_rmarkdown_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="embed_shiny_rmarkdown_files/libs/quarto-html/anchor.min.js"></script>
+<link href="embed_shiny_rmarkdown_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="embed_shiny_rmarkdown_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="embed_shiny_rmarkdown_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="embed_shiny_rmarkdown_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="embed_shiny_rmarkdown_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">How to embed a Shiny app in blogdown</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Antoine Soetewey </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 7, 2020</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="/blog/how-to-embed-a-shiny-app-in-a-r-markdown-document_files/shiny-app-in-blogdown.jpeg" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Photo by Émile Perron</figcaption><p></p>
+</figure>
+</div>
+<p>If you have developed and deployed a Shiny app and would like to embed it in blogdown, follow these steps:</p>
+<ol type="1">
+<li>create a new post as usual</li>
+<li>add <code>runtime: shiny</code> (and <code>output: html_document</code> if it is not already included) in the YAML metadata</li>
+<li>insert the following HTML code in the body of the post:</li>
+</ol>
+<pre><code>&lt;iframe height="800" width="100%" frameborder="no" src="https://antoinesoetewey.shinyapps.io/statistics-201/"&gt; &lt;/iframe&gt;</code></pre>
+<p>You should change the URL with the URL of your deployed Shiny app (after <code>src=</code>, do not forget that the URL should start with <code>http://</code> or <code>https://</code> and should be surrounded by <code>"</code>). Moreover, you can modify the height, the width and include or not a frame border with the corresponding tags.</p>
+<p>Here is an example of the result with one of my Shiny app (<a href="https://antoinesoetewey.shinyapps.io/statistics-201/">link</a> to the app):</p>
+<iframe height="800" width="100%" frameborder="no" src="https://antoinesoetewey.shinyapps.io/statistics-201/">
+</iframe>
+<p><br></p>
+<p><em>Note that the app may not work if it has hit the monthly usage limit. Try again later if that is the case.</em></p>
+<p>The code of this article can be found on <a href="https://github.com/AntoineSoetewey/statsandr/blob/master/content/blog/how-to-embed-a-shiny-app-in-a-r-markdown-document.Rmd">GitHub</a>.</p>
+<p>If you encounter an issue, try loading the following packages in the body of your new post: <code>shiny</code>, <code>widgetframe</code> (you can load a package with the command <code>library(widgetframe)</code>). If one of the package is not installed yet, you can do it with the command <code>install.packages("widgetframe")</code>.</p>
+<p>I hope this article helped you to embed a Shiny app in your blogdown website.</p>
+<p>As always, if you have a question or a suggestion related to the topic covered in this article, please add it as a comment so other readers can benefit from the discussion. If you find a mistake or bug, you can inform me by <a href="https://github.com/AntoineSoetewey/statsandr/issues" target="_blank" rel="noopener">raising an issue on GitHub</a>. For all other requests, you can contact me <a href="/contact/">here</a>.</p>
+<p>Get updates every time a new article is published by <a href="/subscribe/">subscribing to this blog</a>.</p>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

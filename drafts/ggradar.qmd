@@ -1,0 +1,56 @@
+---
+title: "ggradar"
+format: html
+---
+
+```{r}
+library(ggradar)
+library(tidyverse)
+library(scales)
+```
+
+
+```{r}
+mtcars_radar <- mtcars %>% 
+  as_tibble(rownames = "group") %>% 
+  mutate_at(vars(-group), rescale) %>% 
+  tail(4) %>% 
+  select(1:10)
+```
+
+```{r}
+ggradar(mtcars_radar)
+
+```
+
+```{r}
+peng = palmerpenguins::penguins
+
+peng %>% 
+  mutate_at(vars(-group), rescale) %>% 
+  tail(4)
+```
+
+```{r}
+mtcars %>% 
+  as_tibble(rownames = "group") %>% 
+  mutate_at(vars(-group), rescale) %>% 
+  tail(4) %>% 
+  select(1:10) %>% 
+  ggradar::ggradar(fill = TRUE, fill.alpha = .2)
+```
+
+
+
+```{r}
+peng %>% 
+  filter(species == "Adelie") %>%
+  select(island,contains(c("mm", "mass"))) %>% 
+  rename(length = 2, depth = 3, flipper = 4, mass = 5) %>% 
+  distinct(island, .keep_all = TRUE) %>% 
+  mutate_at(vars(-island), rescale) %>% 
+  ggradar(fill = TRUE, fill.alpha = .2, base.size = 10)+
+  scale_color_manual(values = c("darkorange", "darkorchid", "cyan4"))
+
+```
+

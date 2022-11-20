@@ -1,0 +1,43 @@
+---
+title: "Daima Map"
+format: html
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, comment = "", tidy = FALSE)
+
+require(tidyverse)
+require(modelr)
+require(magrittr)
+require(gam)
+require(sf)
+```
+
+
+```{r}
+world = spData::world
+```
+
+
+```{r, fig.width=8, fig.height=8}
+
+africa =  world %>% 
+  filter(continent == "Africa")
+
+case.countries = africa %>% 
+  filter(name_long %in% c("Nigeria", "Uganda", "Tanzania", "Liberia", "Ghana", "Democratic Republic of the Congo"))
+
+
+ggplot()+
+  ggspatial::layer_spatial(data = africa, 
+                           col = "#ED6300", fill = "#FBE1CB",size = .5) +
+  ggspatial::layer_spatial(data = case.countries,
+                           col = "#ED6300", fill = "cyan4",size = .5, alpha = .2)+
+  # geom_sf_text(data = case.countries, aes(label = name_long))+
+  coord_sf(crs = 4326)+
+  cowplot::theme_map()
+
+
+```
+

@@ -1,0 +1,234 @@
+---
+title: "Accessing and Mapping Wind Data with R"
+format: html
+---
+
+## Introduction
+In this post we are going to look at how to get wind data, map and visualize the wind vector and streamline in the Western Indian Ocean Region with R programming language. We are going to use **rWind**, an R package with several tools for downloading, editing and converting wind data from [Global Forecast System](https://www.ncei.noaa.gov/products/weather-climate-models/global-forecast). This awesome package make the donwload of wind data for any place on the planet easier than ever. 
+
+
+Wind data is a powerful source of information that could be used for many purposes in biology and other sciences: from the design of air pathways for airplanes to the study of the dispersion routes of plants or bird migrations. Making more accessible this kind of data to scientist and other users is the objective of ERDDAP (http://coastwatch.pfeg.noaa.gov/erddap/index.html), a web service to dive into a lot of weather and oceanographic data-bases and download it easily. 
+
+## Needed package
+We are going to explore the wind speed and direction and use the western Indian Ocean region as our modal case study. We need several packages for this task which include: **tidyverse** data wrangling; **sf** for importing the shapefile and spatial analysis; **rWind** for downloading wind data in tidy format; **classInt** for creating bins; **lubridate** for defining timestamps for downloading wind data; **metR** for mapping of streamlines; and **oce** to import color codes for continuous data. We can load these packages into our session using a `require` function;
+
+
+```{r}
+require(rWind)
+require(sf)
+require(tidyverse)
+require(oce)
+require(metR)
+require(lubridate)
+
+```
+
+## Get wind data
+We first need to define the date for which the wind data is needed. Then we download the data with rWind. In this case, we download the wind data of August 15, 2022 that are within the geographic extent of the Western Indian ocean. We defined the geographical extent of the region that lies between longitude 35 and 70 and latitude -30 and 15N.
+
+
+```{r}
+wind = wind.dl(yyyy = 2022, mm = 08, dd = 15, tt = 12, 
+               lon1 = 20, lon2 = 70, lat1 = -40, lat2 = 15, type = "csv")
+
+wind
+```
+
+The downloaded dataset has several important features for every available coordinate point. One of them is wind direction (dir) while another is wind speed measured in meters per second. Wind speed is computed from the U (ugrd10m) and the V (vgrd10m) vector components using the Pythagorean Theorem. The U and V vector components show where the wind comes from. The V component is parallel to the latitude with negative values for the wind that originates from the north and positive values for the wind that comes from the south. The U component is parallel to the longitude with negative values for the wind that originates from the east and positive values for the wind that comes from the west.
+
+```{r}
+wind = wind %>% 
+  select(lat, lon, u = 4, v = 5, dir, speed) |>
+  as_tibble()
+```
+
+## Mapping wind data
+We have the wind data in proper shape! The time is ripe to prepare the map of WIO region and display the values. We begin by loading the shapefile of Africa into our session.
+
+```{r}
+africa = st_read("d:/semba/shapefile/africa.shp", quiet = TRUE)
+```
+
+
+
+
+```{r, fig.width=7, fig.height=7}
+
+wind  %>% 
+  ggplot(aes(x = lon, y = lat, z = speed))+
+  metR::geom_contour_fill(bins = 120) +
+  metR::geom_vector(aes(dx = u, dy = v), skip = 1, min.mag = 1, arrow.type = "open") +
+  metR::scale_mag(max_size = .85)+
+  scale_fill_gradientn(colours = oce::oce.colors9B(120))+
+  ggspatial::layer_spatial(data = africa, fill = "ivory",color = "blue", size = .25, alpha = .99)+
+  coord_sf(xlim = c(36,65), ylim = c(-25,10))+
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_text(colour = "ivory"), 
+        panel.grid = element_blank(),
+        legend.position = "bottom",
+        plot.background = element_rect(fill = "#070C33", color = NA),
+        panel.background = element_rect(fill = "#070C33", color = NA),
+        legend.background = element_rect(fill = "#070C33", color = NA),
+        legend.spacing.y = unit(.5, "pt"),
+        panel.border = element_blank()
+        )
+```
+
+
+
+```{r, fig.width=7, fig.height=7}
+
+wind  %>% 
+  ggplot(aes(x = lon, y = lat, z = speed))+
+  metR::geom_contour_fill(bins = 20) +
+  stat_subset(aes(subset = speed > 10),geom = "point", size = 0.1) +
+  # metR::geom_vector(aes(dx = u, dy = v), skip = 1, min.mag = 1, arrow.type = "open") +
+  # metR::scale_mag(max_size = .85)+
+  scale_fill_gradientn(colours = hcl.colors(n = 120, palette = "Roma") %>% rev(), 
+                       trans = scales::modulus_trans(p = .5)
+                       )+
+  ggspatial::layer_spatial(data = africa, fill = "#DCDDDF",color = "blue", size = .25, alpha = .99)+
+  coord_sf(xlim = c(28,65), ylim = c(-35,1))+
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_text(colour = "ivory"), 
+        panel.grid = element_blank(),
+        legend.position = "bottom",
+        plot.background = element_rect(fill = "#070C33", color = NA),
+        panel.background = element_rect(fill = "#070C33", color = NA),
+        legend.background = element_rect(fill = "#070C33", color = NA),
+        legend.spacing.y = unit(.5, "pt"),
+        panel.border = element_blank()
+        )
+
+ggsave("d:/semba/2022/ocean_acidification_Countries Reports/typsetOA/figures/cover_wind.pdf", width = 7, height = 7)
+```
+
+
+metR is great package with nifty function to plot streamlines of wind speed and direction. We need first to define colors palette that we are going to use and also define the wind speed breaks
+
+
+```{r}
+# colors
+cols <- c(
+  '#feebe2', '#d84594', '#bc2b8a', '#7a0177'
+)
+
+newcol <- colorRampPalette(cols)
+ncols <- 6
+cols2 <- newcol(ncols)
+
+# breaks
+vmin <- wind %>% pull(speed) %>% min(na.rm = TRUE)+1
+vmax <- wind %>% pull(speed) %>% max(na.rm = TRUE)
+
+brk <- classInt::classIntervals(wind$speed,
+  n = 6,
+  style = "fisher"
+)$brks %>%
+  head(-1) %>%
+  tail(-1) %>%
+  append(vmax)
+
+breaks <- c(vmin, brk)
+```
+
+Then we plot the streamline
+
+```{r, fig.width=7, fig.height=7}
+
+wind  %>% 
+  ggplot(aes(x = lon, y = lat, z = speed))+
+  metR::geom_streamline(aes(  x = lon, y = lat, dx = u, dy = v, color = sqrt(..dx..^2 + ..dy..^2)),
+                        L = 2, res = 2, n = 60,
+                        arrow = NULL, lineend = "round", alpha = .85)+
+  ggspatial::layer_spatial(data = africa, fill = NA,color = "#07CFF7", size = .25, alpha = .99)+
+  coord_sf(xlim = c(36,65), ylim = c(-25,10))+
+  scale_color_gradientn(
+    name = "Average speed (m/s)",
+    colours = cols2,
+    breaks = breaks,
+    labels = round(breaks, 1),
+    limits = c(vmin, vmax)
+        )  +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_text(colour = "ivory"), 
+        panel.grid = element_blank(),
+        legend.position = "bottom",
+        plot.background = element_rect(fill = "#070C33", color = NA),
+        panel.background = element_rect(fill = "#070C33", color = NA),
+        legend.background = element_rect(fill = "#070C33", color = NA),
+        legend.spacing.y = unit(.5, "pt"),
+        panel.border = element_blank()
+        )+
+  guides(
+    fill = "none",
+    color = guide_legend(
+      override.aes = list(size = 3, alpha = 1, shape = 15),
+      direction = "horizontal",
+      keyheight = unit(2.5, units = "mm"),
+      keywidth = unit(15, units = "mm"),
+      title.position = "top",
+      title.hjust = .75,
+      title.theme = element_text(colour = "ivory"),
+      label.hjust = .75,
+      label.theme = element_text(colour = "ivory", size = 10),
+      nrow = 1,
+      byrow = T,
+      reverse = F,
+      label.position = "bottom" )
+    )
+```
+
+
+We zoomed to much smaller area with an intention to visualize the wind convergence in the Mozambique Channel and swirling nature of the wind as they approach the eastern side of the Madagascar Island
+
+```{r, fig.width=7, fig.height=7}
+
+wind  %>% 
+  ggplot(aes(x = lon, y = lat, z = speed))+
+  metR::geom_streamline(aes(  x = lon, y = lat, dx = u, dy = v, color = sqrt(..dx..^2 + ..dy..^2)),
+                        L = 2, res = 2, n = 60,
+                        arrow = NULL, lineend = "round", alpha = .85)+
+  ggspatial::layer_spatial(data = africa, fill = NA,color = "#07CFF7", size = .25, alpha = .99)+
+  coord_sf(xlim = c(35,65), ylim = c(-25,-8))+
+  scale_color_gradientn(
+    name = "Average speed (m/s)",
+    colours = cols2,
+    breaks = breaks,
+    labels = round(breaks, 1), 
+    # trans = scales::sqrt_trans(),
+    limits = c(vmin, vmax)
+        )  +
+  theme_bw() +
+  theme(axis.title = element_blank(),
+        axis.text = element_text(colour = "ivory"), 
+        panel.grid = element_blank(),
+        legend.position = "bottom",
+        plot.background = element_rect(fill = "#070C33", color = NA),
+        panel.background = element_rect(fill = "#070C33", color = NA),
+        legend.background = element_blank(),
+        legend.spacing.y = unit(.5, "pt"),
+        panel.border = element_blank()
+        )+
+  guides(
+    fill = "none",
+    color = guide_legend(
+      override.aes = list(size = 3, alpha = 1, shape = 15),
+      direction = "horizontal",
+      keyheight = unit(2.5, units = "mm"),
+      keywidth = unit(20, units = "mm"),
+      title.position = "top",
+      title.hjust = .75,
+      title.theme = element_text(colour = "ivory"),
+      label.hjust = .75,
+      label.theme = element_text(colour = "ivory", size = 10),
+      nrow = 1,
+      byrow = T,
+      reverse = F,
+      label.position = "bottom" )
+    )
+
+```

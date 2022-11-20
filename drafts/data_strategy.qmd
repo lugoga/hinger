@@ -1,0 +1,169 @@
+---
+title: "Building a Data Strategy — The Essentials"
+author: "Masumbuko Semba"
+date: "September 14, 2022"
+format: pdf
+---
+
+
+Businesses thrive on data. When it comes to understanding themselves, their customers, their target audience and much, much more, then it is data that organisations need. Not just any data, but high-quality, accurate and relevant data.
+
+But getting to that data can be tricky, both for businesses who use that data to inform key strategies and for insight teams who are in charge of generating the best data possible for their client stakeholders. This is where dedicated data strategies come into play.
+
+# What is a Data Strategy
+According to Gartner, a data strategy is “a highly dynamic process employed to support the acquisition, organisation, analysis, and delivery of data in support of business objectives.” While this definition is accurate, it doesn’t actually state what a data strategy is.
+
+Putting it very simply, a data strategy is a framework for success.
+
+In more detail, a data strategy is the foundation of all an organisation’s data processes and practices. It itself is a large-scale process made up of interconnected elements and stages outlining the people, processes and technologies involved that generate data to feed into decision-making processes across the stakeholder organisation. Taking all stakeholders involved on a journey from understanding current business practices, objectives and needs to the market research tools and technological infrastructure needed to make their insight activation dreams a reality.
+
+‘‘With our customer panel, we are able to amplify the voice of our customers across the organisation to make sure all teams are staying customer-focused.”
+
+- Head of Insight at Lowell
+
+# Elements of Data Strategy
+When creating a data strategy, there are a number of key elements that will propel any business’ data strategy into success:
+
+Understanding the business’ unique needs and objectives at all times — these will both evolve as time goes on, so making sure to keep up to date with those needs and objectives is essential for keeping the data strategy relevant to the business zeitgeist.
+Understanding market research capabilities and objectives — this will also evolve with time, as the technologies accumulate and the objectives change with the business’s objectives.
+
+Creating research plans and designing tasks to source the right data — understanding what the right data might be will come from understanding the business’s challenges and needs. Then it’s up to the insight teams and stakeholders to design a research plan to source that data.
+Implementing the first stages of research — which means recruiting the right participants and attaining the use of the right tools and platform setup. Identifying the right participants, tools and platforms to use should have been done in the research planning/designing stage.
+Generating data from specifically designed research tasks — employing the research tasks designed with the research sample recruited and gaining the best data possible.
+
+Analysing and communicating data to the right stakeholders (data visualisation and insights activation) — generating insights from data and figuring out the right language to communicate those insights in that speaks to all the relevant stakeholders.
+Identifying people and processes to boost data communication — for example, creating insight advocates, identifying the right stakeholders and putting in place infrastructure to help boost the sharing of data across wider audiences.
+
+Employing a data governance programme is what allows a greater sharing of data, enhancing access to research and insights to all stakeholders necessary. This also creates a history of the data, and how it’s been used and manipulated from all sources.
+
+Everything from hindsight, insight and foresight is mapped out in a strong data strategy. Because of this, it’s imperative for stakeholders to make sure that any data strategy they create is made with the best contextual insights possible, and this starts with a strong understanding of their own business requirements. From this, those organisations that stick to their data strategy throughout their insight journey should be able to follow it like a roadmap to future success.
+
+A strong data strategy holds a wealth of benefits for stakeholder organisations that take the time to get it right.
+
+# Benefits of a Data Strategy
+A strong data strategy holds a wealth of benefits for organisations that create and implement one well. For stakeholders, a data strategy is the key to success for all decisions made, big and small. In fact, an impactful data strategy develops clear channels of data generation and distribution, thus improving the visibility, access and usage of data, which holds a variety of different benefits.
+
+The benefits attached to this for stakeholders includes increased access to data whenever and wherever those stakeholders are, increased connection with other teams are they use that data too, and an increased chance of collaboration with stakeholders in other teams as data-driven decisions impact multiple areas of the organisation at once.
+
+Through this, there is another benefit that can be attained, that is a chance for enhanced, dully agile decision-making, which means stakeholders can make more informed decisions in real-time as data is instantly accessible once generated and communicated through the set up of dedicated distribution and storage channels.
+
+Another benefit of a strong data strategy is that stakeholders are able to understand and mitigate the risk of any decision made within the organisation. Whether they’re setting up a new business strategy or evaluating the continuous impact of a decision made in the heat of the moment, the data that stakeholders are able to get from the channels set up by their tailored data strategy will allow them to gain valuable data on the situation at hand and the risks that are currently prevalent — this helps stakeholders make well-informed decisions in an instant based on a good solid contextual understanding. The building up of the practice of going to check the data before making a decision will come more naturally to stakeholders as they stick to the data strategy and have easy access to those data generation and distribution channels, and as such unconscious due diligence will develop and occur every time a decision needs to be made at all levels.
+
+There are a couple of crossover benefits already stated above, for example, insight teams benefit from the development of clear channels of data generation and distribution too. For insight teams, the greatest benefit awarded by a strong data strategy will be more widespread recognition of how valuable research data is across the stakeholder organisation.
+
+This benefit will only lead to yet more high-quality research in the long run, as stakeholders will be more willing to come forward to request research more often with the insight team gaining a great reputation for inherently good data and the founders of successful decision-making in the stakeholder business. With all of that new research flooding through will come the required funding to complete research to better quality, meaning that the insight team will be able to invest in more tools, better research platforms, more skills and more personnel to help cope with the increased demand.
+
+
+#  Understanding Business Data Requirements
+As mentioned above, the first step of creating a data strategy is to fully understand exactly what data the business needs. Business needs come in many forms, but primarily a data strategy can be formed with three key insights: historical needs, current needs and possible future needs. From this, stakeholders can catch a glimpse into what their data strategy will look like and can work towards creating a strategy that will be truly impactful.
+
+There are a few types of data that every successful business needs: quantitative, qualitative and behavioural data in particular are crucial to understanding consumer decision-making and the wider business strategic decisions. The base of a data strategy is understanding the data that stakeholders currently have access too, the types, volume, accuracy, relevance, and then also the use that data gets across the business. This current standard will be the base to work from, and then conducting an investigation to see how much data a business needs to function will be the next stage.
+
+Understanding what data the business needs will provide some foundational objectives to base the data strategy on, and these objectives will be subject to refinement the more information stakeholders receive and the more the data strategy is built up.
+
+Another of the more vital aspects of understanding what needs to go into a data strategy is documentation of the technological infrastructure currently in place for stakeholders to request, share, view and act on data, and what technological infrastructure might be needed in the future to support data and insight sharing across a wider audience that is currently reached. Stakeholders also need the right technology infrastructure in place to access research and insights in the first place.
+
+One of the impacts of a strong data strategy will inevitably be to build up the right customer-centric culture within an organisation, as stakeholders learn to appreciate and use high-quality data and insights. But there might already be a customer-focussed culture for the data strategy to work on; If there is already a strong sense of appreciation or understanding of the importance of insights, then the data strategy should seek to enhance the lacking aspects more to make sure this culture of insights stays strong through periods of adversity.
+
+One of the many questions that should inform the data strategy is: are the business’ stakeholders asking the right questions on a daily basis? This is a crucial aspect to understand within your organisation, as it will help identify potential pain points that could hinder the data strategy’s effectiveness. Why are questions so important? Well, if decision-makers across the business don’t ask questions they won’t appreciate the value of research, and will typically rely on a gut-feeling or experience-based decision rather than direct data from consumers.
+
+# Challenges to Building the Perfect Data Strategy
+From attaining and using the right skills to creating a whole new culture within the organisation, there are numerous challenges to building the perfect data strategy for any business.
+
+There are a number of challenges to creating the perfect data strategy — and the concept of ‘perfect’ is challenge number one.
+
+**Perfect is the Enemy of Progress**
+First things first, I would like to mention one thing to set minds at rest, which is that there is no such thing as ‘perfect’ — and that striving for ‘perfect’ is what bogs stakeholders and insight teams down when trying to create something like an impactful data strategy that will affect the entire organisation. We believe that for something to be truly effective it needs to be ‘perfect’ from the very beginning, and that is just plain wrong.
+
+The concept of ‘perfect’ is a fleeting illusion that we strive towards in vain, disregarding the alternative, tangible, strong concepts like ‘impactful’, ‘efficient’, and ‘innovative’ that we certainly have the skills to achieve, and those are what stakeholders and insight teams should strive for when building the best data strategy for their organisation. So getting past that idea of ‘perfect’ is the first challenge to overcome.
+
+**Agile is the Way to Go**
+The best chance for a data strategy to achieve anything close to perfection is for it to be ‘agile’ and allowed to evolve as much as possible with new information and data received at intervals throughout its creation and implementation. This is a challenge in and of itself as it involves a lot of moving parts to account for, so any form of structure tends to be gladly welcomed.
+
+The structure is good for keeping track of the strategy and its evolution, but there needs to be some level of flexibility in order for the strategy to evolve organically and have the best chance of a continuous positive impact throughout the entire duration of the data strategy. Once this agile characteristic is achieved in a data strategy, this will help the data strategy stay relevant for longer, and as such will drive powerful decision-making processes for longer than a fully structured data strategy would ever hope to achieve.
+
+# The Value of Full Understanding
+One of the main challenges to building the best data strategy is the crucial understanding of what a data strategy entails, something that this article will hopefully rectify. We have already discussed the important elements of a data strategy, the benefits and challenges it will bring, and how the business requirements will help form a tailored data strategy for maximum impact, the rest of this article will expand upon this and how market research can help.
+
+However, once a full understanding is achieved, or as much of a full understanding as possible, the next challenge to consider is a lack of research technology and skills to create an impactful data strategy.
+
+# Finding the Right Technology
+All processes and strategies rely on technology to work, to play out their actions and reap the rewards. The technology needed for a data strategy to work cohesively is extensive, but we can understand what technologies to obtain based on the elements listed above, but the two main points to consider are: what technology is used for the data generation, and what technology is used to communicate/distribute the data at the end of the research experience.
+
+Arguably the most important technologies needed in the entire data strategy is for the data generation itself — a data strategy won’t work if there is no data there to begin with. So, a research platform like our own InsightHub and suite of data collection and analysis tools are needed. What platform and suite of tools an insight team will need will very much depend on the data they’re looking to generate. Will they be needing all the tools in one platform? If not, then they’ll need technologies that talk to each other and integrate together so that they are able to move data around easily for analysis and distribution.
+
+Once the data is generated, there needs to be a technological infrastructure in place to communicate the data in a medium that the stakeholders are familiar with and will actively use on a daily basis. If the technology involved isn’t used by stakeholders then this data will sit there influencing exactly nothing, and all decisions will be made ill-informed. Using preferred forms of communication will make the data, and by extension the research team, easily accessible whenever it is needed.
+
+# Cultivating the Correct Skills
+Having the technology there without the skill to use it is another crucial barrier to building and implementing a strong data strategy. Stakeholders and insight teams need to take the time to understand what skills are needed to create and carry out a data strategy as it evolves through time.
+
+Obviously, there are vital skills needed in the insights team to design and carry out the research needed to generate the data that fuels the strategy. The standard market research skills include: research design, moderation, analysis, and communication, but there are other skills that might not be thought of in the moment; for example, creativity is an underrated skill that can be used in many research experiences to bolster existing practices or to design entirely new experiences that will enhance participant, stakeholder and research engagement in the market research taking place.
+
+On the other side of the coin, understanding how to act on the data and insights is vital for stakeholders to make the most of the data strategy, and use it to make the right decisions on a daily basis. So how do they activate insight? By:
+
+# Accessing insights at the right time
+Paying close attention to the insights that are generated on a regular basis to see if there’s anything new and relevant to them
+Closely watching the wider business and seeing how their decisions impact the wider business
+Build a close working relationship with the insights team and any insights advocates in the stakeholder team so opportunities to generate new data and use existing insights will crop up in daily conversation
+Go to any insight communication sessions or company-wide meetings to see how data is being used elsewhere and what decisions are being made.
+And these are just a few of the many ways in which stakeholders can activate insights in their daily work life.
+
+
+# Where Market Research Comes Into It
+Throughout this, we have been talking now and then about how essential market research is to building and implementing a data strategy — but where exactly does market research fit into it? Well, market research comes into its own when the data strategy is being created — through the research into what it is the business actually needs from a data strategy — and then in the implementation where data is being continuously generated for stakeholder use.
+
+Market research can provide the skills needed to gather data, the knowledge needed to understand exactly what data the business needs, and the best ways to go about collecting it. Market researchers can use their skills to get to the bottom of what is happening within each aspect of the business as it stands and then suggest a plan to tackle it through the data strategy.
+
+“This panel has been essential in balancing creative with clinical messaging in our Glaucoma marketing campaign. We are continuously getting clear answers to take to senior stakeholders and inform final decisions.”
+
+- Customer Insights Manager at Specsavers
+
+Then there are the more practical skills that market research can provide when the data strategy is being created and is in place:
+
+# Sourcing and gathering data
+Turning data to insights (analysis)
+Data visualisation and communication
+Recommending and supporting actions for insights activation
+So what is the first thing that market research can do to help create the data strategy? Stakeholders can use the insight team to gain an objective view of the current state of the organisation they are running. The insight team, with the right research technology, time and funding, are able to really get into the nitty-gritty of what makes this business run, how the decisions are made, and what exactly stakeholders will need to do to help this data strategy become it’s most impactful self. This means taking a deep dive into the decision-making processes and policies of each team in the organisation, and then working to understand the constraints their working with — budget, resources, skills, technological infrastructure underlying the entire department, etc.
+
+Then, conducting research on what the consumers want out of the business — are there policies and processes in place that are hindering vital aspects of the customer experience? How can teams in that organisation best serve their target audience? And then they need to take that data and use it to make sure that their data strategy will help propel them towards the achievement of this purpose.
+
+Once the data is gathered to produce a good data strategy, insight teams will be put to work using those same processes to generate the data specific to whatever the stakeholders’ decisions are at the time. These will be the standard market research experiences that immediately come to mind when you think about the phrase ‘market research.
+
+# Democratising Access to Data
+If a data strategy is created and implemented well, then one of the biggest benefits will be democratising access to research and data. Just as this strategy makes sure the insight team are well-equipped with the right tools to gain valuable insights, it builds the right infrastructure for the rest of the organisation to access both research and insights whenever and wherever it is needed.
+
+One of the ways to democratise access to the data produced by the insights team is to create a data or insights warehouse that documents all current and historical data to ever be generated in the name of the organisation; storing the data itself as well as the details on the research project that generated that data. But creating a data warehouse isn’t a simple task. It requires a lot of work and effort sifting through the historical data that has been recorded and the present data currently being generated, then sorting and recording it for all personnel in the business to find later on. Depending on the age of the business, this could mean years upon years of data to find and a corporate culture cemented into the very fabric of the business that will need to change in order for the data strategy to attempt to enact any lasting positive change.
+
+Another way of democratising access to data and insights is to allocate each team an Insights Advocate. The role of an insights advocate is to extend the reach of consumer data by being present in everyday conversations where the insights team cannot be, and then advocate the use of insights for each decision made within those conversations. They can be the link between insight team and stakeholder that makes it easy to not just access insights, but access market research opportunities too.
+
+Those insight advocates will be able to understand exactly what mediums their stakeholders like to be communicated in, and relay that to the insight team so they can innovate their current reporting methods to include some creative options they might not have thought about before, creating new data distribution channels that actually work.
+
+# The Importance of Data Governance
+Data governance is an important part of a data strategy and successful business. It is the “collection, creation, classification, formatting and usage across organizational boundaries”, breaking down organisational siloes and helping stakeholders across the business connect to make great decisions.
+
+Data strategies are the roadmaps to business success when created with great consideration. They lay down the infrastructure needed and reform crucial data policies to help stakeholders make better decisions.
+
+When we talk about ‘data governance’, we are essentially discussing how organisations manage data from the generation stage to how it’s stored and used in different teams. Stakeholders need to understand how data moves throughout an organisation and then work to consider the impact of that usage through various internal channels, dashboards and analytics. Setting up a data governance team could help stakeholders to create great data privacy and security policies and protect their consumers’ and the organisation’s sensitive data. There are a few benefits to note as a result of good data governance within an organisation:
+
+Greater efficiency — by understanding the ways in which data flows and is used, there are opportunities for innovation and more efficient ways of working with data. These opportunities might highlight new technologies that could automate certain processes or new data communication channels that reach a wider audience in a fraction of the time and in a way that immediately understand instead of stakeholders going hunting for insights through a huge data warehouse.
+Better data-quality — the impact of high-quality data versus low-quality data will certainly impact on the success of the decisions made throughout the organisation. Quality depends on the accuracy and relevance of that data, and once the lower-quality data has been identified, more resources can be allocated to the insights team to replace it with high-quality, directly actionable data.
+Better data privacy/security compliance — as some of this data will be personal or sensitive in nature, it’s natural that the data security processes and policies for those handling the data will be stricter to ensure it’s not abused. Laws such as the UK’s Data Privacy Act and EU’s GDPR will forever hold stakeholders and insight teams accountable for their gathering and usage of sensitive data.
+Improved business performance — this goes hand-in-hand with the overall benefit of ‘better decision-making across the board’. For those that use the data and insights religiously, their decisions will be a lot better informed, and thus will have a better chance of success. What we mean by success, is that it will have a positive outcome on the strategy, team and business as a whole. It will go towards creating a better brand and customer experience, and deliver a positive impact on the team that made that decision. The more stakeholders that use data and insights are more likely to be able to identify relevant data and prioritise decisions, strategies and processes.
+“Our online community allows us to listen closely to our customers, in order to gain continuous feedback on their happiness with the service they have experienced.”
+
+- Member Communications Manager at Coventry Building Society
+
+Two Ways of Democratising Access
+One of the ways to democratise access to the data produced by the insights team is to create a data or insights warehouse that documents all current and historical data to ever be generated in the name of the organisation; storing the data itself as well as the details on the research project that generated that data.
+
+But creating a data warehouse isn’t a simple task. It requires a lot of work and effort sifting through the historical data that has been recorded and the present data currently being generated, then sorting and recording it for all personnel in the business to find later on. Depending on the age of the business, this could mean years upon years of data to find and a corporate culture cemented into the very fabric of the business that will need to change in order for the data strategy to attempt to enact any lasting positive change.
+
+
+Another way of democratising access to data and insights is to allocate each team an Insights Advocate. The role of an insights advocate is to extend the reach of consumer data by being present in everyday conversations where the insights team cannot be, and then advocate the use of insights for each decision made within those conversations. They can be the link between insight team and stakeholder that makes it easy to not just access insights, but access market research opportunities too.
+
+Those insight advocates will be able to understand exactly what mediums their stakeholders like to be communicated in, and relay that to the insight team so they can innovate their current reporting methods to include some creative options they might not have thought about before, creating new data distribution channels that actually work.
+
+# The Never-Ending Loop
+Regardless of what it may seem, a data strategy isn’t just a one-and-done thing. While it is the nature of business strategies to pop into existence and then fizzle right back out again once the objective has been achieved, only to be replaced by another strategy that seeks to build on the previous one and innovate into future success. No, a data strategy isn’t like that at all. A truly successful data strategy is an agile one, a strategy that evolves when it encounters new objectives, new technology and new thought leadership.
+

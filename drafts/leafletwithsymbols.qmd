@@ -1,0 +1,26 @@
+---
+title: "Untitled"
+format: html
+---
+
+```{r}
+require(tidyverse)
+require(leaflet)
+```
+
+please download a symbol as svg format from https://iconmonstr.com/ and edit it in illustrator. Once edited export using save for web function to specify the width and height of icon symbol
+```{r}
+salmon = makeIcon(iconUrl = 'fishIcon.png',
+                  iconRetinaUrl = 'fishIcon.png',
+                  iconWidth =  51, 
+                  iconHeight = 34)
+
+
+tibble(lat = c(-6.81, -6.825822287918327, -6.80762697650438),
+       lon = c(39.3, 39.28814364894883, 39.29591132582143), 
+       name = "Mikoko", "Mbwaya", "Nimbe") %>% 
+  # st_as_sf(coords = c("lon", "lat"), crs = 4326) %>% 
+  leaflet() %>% 
+  addTiles() %>% 
+  addMarkers(lng = ~lon, lat = ~lat,icon = salmon, popup = ~name)
+```

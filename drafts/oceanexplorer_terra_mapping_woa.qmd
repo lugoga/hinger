@@ -1,0 +1,109 @@
+---
+title: "Untitled"
+---
+
+```{r}
+#| warning: false
+#| message: false
+require(tidyverse)
+require(sf)
+require(terra)
+require(tidyterra)
+require(oceanexplorer)
+
+```
+
+The variable names that can be accessed are found in NOAA_data
+```{r}
+NOAA_data
+```
+
+```{r}
+july = get_NOAA(var = "phosphate", spat_res = 1, av_period = "July")
+
+july %>% 
+  filter_NOAA(depth = 20) %>% 
+  rast()
+
+```
+
+
+```{r}
+
+july.raster = as(july, "Raster") 
+
+raster::crs(july.raster) = 4326
+
+
+```
+
+
+use `rotate` function to Rotate a SpatRaster that has longitude coordinates from 0 to 360, to standard coordinates between -180 and 180 degrees (or vice-versa). Longitude between 0 and 360 is frequently used in global climate models.
+```{r}
+raster::extent(july.raster) <- raster::extent(-180, 180, -90, 90)
+
+```
+
+```{r}
+july.terra = july.raster %>% 
+  terra::rast()
+  
+july.terra
+
+```
+
+```{r}
+#| warning: false
+kesho = july.terra %>% 
+  select(layer15 = 15, layer2 = 2) %>% 
+  mutate(tofauti = layer15 - layer2) 
+
+ggplot() +
+  geom_spatraster(data = kesho %>% select(-3)) +
+  ggspatial::layer_spatial(data = spData::world, fill = NA)+
+  facet_wrap(~lyr)+scale_fill_gradientn(colors = hcl.colors(n = 20, palette = "Spectral"), 
+                                        trans = scales::modulus_trans(p = 0.0001))
+  
+  
+```
+
+```{r}
+#| warning: false
+wio.terra = kesho %>% 
+  terra::crop(c(20,80,-40,20)) %>% 
+  select(-3)
+
+wio.region = spData::world %>% 
+  st_crop(xmin = 20, xmax = 70,ymin = -40, ymax = 20)
+
+ggplot() +
+  geom_spatraster(data = wio.terra) +
+  ggspatial::layer_spatial(data = wio.region, fill = "grey")+
+  coord_sf(xlim = c(25,65), ylim = c(-35, 15)) +
+  facet_wrap(~lyr)+
+  scale_fill_gradientn(colors = hcl.colors(n = 20, palette = "Spectral") %>% rev(), 
+                       na.value = "white",
+                       trans = scales::sqrt_trans())+
+  theme(axis.title = element_blank())
+```
+
+
+```{r}
+#| warning: false
+wio.tb = wio.terra %>% terra::as.data.frame(xy = TRUE) %>% 
+  as_tibble() %>% 
+  pivot_longer(cols = 3:4, values_to = "data", names_to = "lyr")
+
+ggplot(data=wio.tb, aes(x =x, y = y, z = data))+
+  metR::geom_contour_fill(bins = 80)+
+  metR::geom_contour2(aes(label = ..level..), binwidth = .3, skip = 0) +
+  ggspatial::layer_spatial(data = wio.region, fill = "grey")+
+  coord_sf(xlim = c(25,65), ylim = c(-35, 15)) +
+  facet_wrap(~lyr)+
+  scale_fill_gradientn(colors = hcl.colors(n = 20, palette = "Spectral") %>% rev(),
+                       na.value = "white", 
+                       trans = scales::sqrt_trans())+
+  theme(axis.title = element_blank())
+
+```
+
