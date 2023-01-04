@@ -210,7 +210,9 @@ Now, to combine both maps where the map of WIO region is inset on the upper left
 
 
 
-```{r map2, fig.width=6, fig.height=6, fig.cap="Map of the northwest side of Madagascar. An inset map indicate the location of the study area in the Western Indian Ocean region"}
+```{r fig.width=6, fig.height=6}
+#| fig-cap: Map of the northwest side of Madagascar. An inset map indicate the location of the study area in the Western Indian Ocean region
+#| label: fig-map2
 
 cowplot::ggdraw(plot = map.site) +
   cowplot::draw_plot(inset.map, x = .1, y = .13, width = .4, height = .5)
@@ -219,7 +221,7 @@ cowplot::ggdraw(plot = map.site) +
 
 
 ### Summary
-Therefore , a final map shown in figure \@ref(fig:map2) shows the locations of study sites with reference to the country and provinces and is more professional.
+Therefore , a final map shown in @map2 shows the locations of study sites with reference to the country and provinces and is more professional.
 
 
 
