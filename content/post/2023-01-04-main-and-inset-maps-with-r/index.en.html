@@ -1,0 +1,200 @@
+---
+title: Main and Inset maps with R
+author: Masumbuko Semba
+date: '2023-01-04'
+slug: []
+categories:
+  - spatial
+tags:
+  - map
+description: ''
+thumbnail: ''
+bibliography: "../blog.bib"
+---
+
+
+
+<div id="introduction" class="section level3 unnumbered">
+<h3>Introduction</h3>
+<p>In this post, We learn how we can make publication quality inset maps in R using <code>ggplot2</code> package <span class="citation">(<a href="#ref-ggplot" role="doc-biblioref">Wickham 2016</a>)</span>. When publishing scientific research in journals or presenting research work at a conference, showing maps of data collection sites or experimental locations is one of the key visualization elements. Maps of study sites or sampling locations can help the audience and readers to fathom the data in a better way. Mapping sounds fancy, but it needs substantial training and skill set to make high-quality maps that are reader-friendly and visually aesthetic.</p>
+<p>Sometimes, the study sites are more dispersed and are easy to visualize in large geographic areas. However, in some cases, study sites are clustered, which makes it hard to show them on a broader scale. In that case, inset maps help us show the locations with reference to familiar geographical regions. An inset map is a smaller map featured on the same page as the main map. Traditionally, inset maps are shown at a larger scale (smaller area) than the main map. Often, an inset map is used as a locator map that shows the area of the main map in a broader, more familiar geographical frame of reference.</p>
+</div>
+<div id="spatial-vector-data-storage" class="section level3">
+<h3>Spatial Vector Data Storage</h3>
+<p>If you have been using the vector data and doing spatial analysis, you know shapefile. Shapefile is the most commonly used vector data formats to store data and carry out any spatial analysis.</p>
+</div>
+<div id="characteristics-of-a-shapefile" class="section level3 unnumbered">
+<h3>Characteristics of a shapefile</h3>
+<p>Shapefiles are vector data storage models for storing feature classes composed of points, lines and polygons, but never a mixture. It stores information of the location, shape and attributes of geographical features. Each item in a shapefile has attributes that describe it composed of rows, called records and columns called fields and can also store multipart features, in which a single feature includes multiple objects which includes</p>
+<ul>
+<li><strong>.shp</strong> file stores coordinate data</li>
+<li><strong>.dbf</strong> file stores attribute data</li>
+<li><strong>.shx</strong> file stores a spatial index that speeds drawing and analysis</li>
+<li><strong>.prj</strong> file stores projection information</li>
+<li><strong>.avl</strong> file stores legend</li>
+<li><strong>.xml</strong> file contains metadata</li>
+</ul>
+</div>
+<div id="characteristics-of-a-shapefile-1" class="section level3">
+<h3>Characteristics of a shapefile</h3>
+<ul>
+<li>Takes up more storage space on your system</li>
+<li>Shapefiles have a minimum size of 2GB</li>
+<li>Do not support names in fields longer than 10 characters</li>
+<li>A shapefile cannot have more than one geometry type in a file.</li>
+<li>Cannot store data and time in the same field</li>
+<li>Do not support raster files</li>
+<li>Do not store NULL values in a field; when a value is NULL, a shapefile will use 0 instead.</li>
+</ul>
+<p>But, shapefile has a lot of disadvantages when you wish to scale your work and build integrated &amp; automated workflows for large-scale deployments. Geopackage format offers a variety of features in this regard. And that’s why you need to use Geopackage files instead of shapefile. Let’s dive deeper into the details.</p>
+</div>
+<div id="geopackage" class="section level3">
+<h3>Geopackage</h3>
+<p>A Geopackage is platform-independent format for storing and transferring geospatial information. It is a SQLite based standard format designed for stand-alone databases that holds both raster data and multiple vector data layers in a single file and can be accessible by non-GIS software.</p>
+</div>
+<div id="characteristics-of-a-geopackage" class="section level3">
+<h3>Characteristics of a Geopackage</h3>
+<ul>
+<li>Geopackages are open source, SQLite based database</li>
+<li>No limitation on the file size and can handle large number of features</li>
+<li>Can store both raster as well as vector data layers</li>
+<li>A single Geopackage file can have multiple vector layers with each layer having a different geometry type.</li>
+</ul>
+</div>
+<div id="why-choose-geopackages-and-not-shapefiles" class="section level3">
+<h3>Why choose Geopackages and not Shapefiles?</h3>
+<ol style="list-style-type: decimal">
+<li><p>Shapefile is a multi-file format with minimum of 3 files and several other attached files with different extensions. Sharing a shapefile with someone would be complicated as all the other files attached will also have to be shared. Whereas, Geopackages includes all the information of the layer in a file and is easier to transfer or share.</p></li>
+<li><p>Compared to shapefiles, the column headers in a geopackage can be full names and right by providing the correct context for each column. A shapefile can only have 10 characters to define the column header.</p></li>
+<li><p>Geopackages run faster on algorithm outputs compared to shapefiles.</p></li>
+<li><p>In a geopackage, there is no limit on the file size and can handle large number of features in a smaller file size. A shapefile can handle maximum size of 2 GB and cannot export a vector layer with more features.</p></li>
+<li><p>A Geopackage stores both raster and vector files whereas, shapefiles can store only vector files.</p></li>
+<li><p>Geopackages are lightweight and compatible across environments specially in mobile devices. It is 1.1-1.3x lighter in file size compared to shapefiles.</p></li>
+</ol>
+</div>
+<div id="load-libraries" class="section level3">
+<h3>Load libraries</h3>
+<p>Several packages in R are dealing with spatial data, but in this post we are going to use funtions from <strong>tidyverse</strong> <span class="citation">(<a href="#ref-tidyverse" role="doc-biblioref">Wickham and Wickham 2017</a>)</span> and <strong>sf</strong> <span class="citation">(<a href="#ref-sf" role="doc-biblioref">Pebesma 2018</a>)</span> packages. We can load these packages with a <code>library</code> function as as;</p>
+<pre class="r"><code>library(tidyverse)
+library(sf)</code></pre>
+</div>
+<div id="load-file" class="section level3">
+<h3>Load file</h3>
+<p>We first need to import spatial data into the session. For this case we are going to load the boundary layer of Africa. The file has boundary for 67 polygons representing feature in Africa. We can load the file into the session using <code>st_read</code> function from <strong>sf</strong> package <span class="citation">(<a href="#ref-sf" role="doc-biblioref">Pebesma 2018</a>)</span>.</p>
+<pre class="r"><code>africa = st_read(&quot;../data/africa.gpkg&quot;, quiet = TRUE)</code></pre>
+<p>Next I’ll extract the polygon for WIO region countries from from the <code>Africa</code> package using the <code>filter</code> function.</p>
+<pre class="r"><code>wio = africa  |&gt;  
+  filter(
+    country %in% c(&quot;Tanzania&quot;, &quot;Kenya&quot;, &quot;Mozambique&quot;, &quot;South Africa&quot;, 
+                   &quot;Somalia&quot;, &quot;Madagascar&quot;, &quot;Seychelles&quot;, &quot;Reunion&quot;, &quot;Mauritius&quot;))
+
+wio.point.country = wio %&gt;% wior::polygon_tb() %&gt;% distinct(country, .keep_all = TRUE)</code></pre>
+<p>Then we load study points that were sampled off the coast of Madagascar.</p>
+<pre class="r"><code>sampling.points = st_read(&quot;../data/madagascar_points.gpkg&quot;, quiet = TRUE) %&gt;% 
+  filter(state == &quot;Ocean&quot;)
+
+madagascar = wio %&gt;% filter(country == &quot;Madagascar&quot;)</code></pre>
+</div>
+<div id="focus-map" class="section level2">
+<h2>Focus Map</h2>
+<p>Now, I’ll plot a focused map of Madagascar. We need to define the geographical extent of the area. For that purpose, we first need to identify the extent of the study sites and we can do that using <code>extent</code> function from **sf package;</p>
+<pre class="r"><code>madagascar %&gt;% st_bbox()</code></pre>
+<pre><code>     xmin      ymin      xmax      ymax 
+ 42.71862 -25.60895  50.48378 -11.94543 </code></pre>
+<p>The printed results indicates tha maxima and minima of longitude and latitude, which define the geographical extent of the area. Using the <code>min</code> and <code>max</code> values of coordinates from the previous map, we can draw a polygon over the study sites and see if this extent can best visualize the data.</p>
+<pre class="r"><code>map.site = ggplot() +
+  ggspatial::layer_spatial(data = madagascar, fill = &quot;cyan4&quot;, color = &quot;black&quot;,size = .4)+
+  geom_sf(data = sampling.points, color = &quot;red&quot;, size = 2)+
+  ggsci::scale_color_lancet()+
+  theme_bw(base_size = 12)+
+  theme(axis.title = element_blank())+
+  coord_sf(xlim = c(43, 51), ylim = c(-18,-11))
+
+map.site</code></pre>
+<div class="figure"><span style="display:block;" id="fig:focus"></span>
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/focus-1.png" alt="Sampling points in the coastal waters of Madagascar Island" width="576" />
+<p class="caption">
+Figure 1: Sampling points in the coastal waters of Madagascar Island
+</p>
+</div>
+<p>As you can see, the study sites are located on the northern part of Madagascar Island. However, to make a better sense of the study locations with reference to WIO region, we need to plot them on a focused scale.</p>
+</div>
+<div id="add-map-elements" class="section level2">
+<h2>Add Map elements</h2>
+<p>Professional maps also include some elements like <code>North Arrow</code> and <code>scale</code> etc. We’ll add these components to our map as well. Besides that, I’ll also fill the non-land area with <code>lightblue</code> color for reference and distinction respectively (<em>See</em> figure <a href="#fig:focus1">2</a>).</p>
+<pre class="r"><code>map.site = map.site +
+      guides(size = &quot;none&quot;) +
+  ggspatial::annotation_north_arrow(location = &quot;tr&quot;, 
+                                    height = unit(1.2, &quot;cm&quot;),  
+                                    width = unit(.75, &quot;cm&quot;))+
+  ggspatial::annotation_scale(location = &quot;br&quot;)
+
+map.site</code></pre>
+<div class="figure"><span style="display:block;" id="fig:focus1"></span>
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/focus1-1.png" alt="Sampling points in the coastal waters of Madagascar Island" width="576" />
+<p class="caption">
+Figure 2: Sampling points in the coastal waters of Madagascar Island
+</p>
+</div>
+</div>
+<div id="inset-map" class="section level2">
+<h2>Inset Map</h2>
+<p>Now, I’ll create a full-scale map of WIO region with a red polygon showing the extent of study sites and the focused map. The code below produce figure <a href="#fig:inset">3</a>;</p>
+<pre class="r"><code>inset.map = ggplot() +
+  ggspatial::layer_spatial(data = africa, fill = &quot;grey90&quot;, color = &quot;grey90&quot;) +
+  ggspatial::layer_spatial(data = wio, fill = &quot;grey60&quot;, color = &quot;ivory&quot;,size = .4)+
+  # geom_sf_text(data = wio, aes(label = country))+
+  ggrepel::geom_text_repel(data = wio.point.country, 
+                           aes(x = lon, y = lat, label = country), size = 3)+
+  theme_bw(base_size = 12)+
+  theme(axis.title = element_blank())+
+  geom_rect(aes(xmin = 43, xmax = 51, ymin = -18, ymax = -11), 
+            color = &quot;red&quot;, fill = NA, size = 1.2)+
+  coord_sf(xlim = c(20, 60), ylim = c(-40,15))+
+  theme_test() + 
+  theme(axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.ticks.length = unit(0, &quot;pt&quot;),
+        axis.title=element_blank(),
+        plot.margin = margin(0, 0, 0, 0, &quot;cm&quot;),
+        panel.background = element_rect(fill = &quot;lightblue&quot;))
+
+inset.map</code></pre>
+<div class="figure"><span style="display:block;" id="fig:inset"></span>
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/inset-1.png" alt="An inset map of the WIO region" width="576" />
+<p class="caption">
+Figure 3: An inset map of the WIO region
+</p>
+</div>
+<p>This version looks better compared to the previous one. However, we need to add some information to give it a reference.</p>
+</div>
+<div id="final-map" class="section level2">
+<h2>Final Map</h2>
+<p>Now, to combine both maps where the map of WIO region is inset on the upper left corner we use the function from <strong>cowplot</strong> package. a <code>draw_plot</code> function allow to places a plot somewhere onto the drawing canvas that is established using <code>ggdraw</code> function also from <strong>cowplot</strong> package <span class="citation">(<a href="#ref-cowplot" role="doc-biblioref">Wilke 2018</a>)</span>. By default, coordinates run from 0 to 1, and the point (0, 0) is in the lower left corner of the canvas. The function also allows us to specify the size of the inset map using the <code>width</code> and <code>height</code> functions.</p>
+<pre class="r"><code>cowplot::ggdraw(plot = map.site) +
+  cowplot::draw_plot(inset.map, x = .1, y = .13, width = .4, height = .5)</code></pre>
+<div class="figure"><span style="display:block;" id="fig:map2"></span>
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/map2-1.png" alt="Map of the northwest side of Madagascar. An inset map indicate the location of the study area in the Western Indian Ocean region" width="576" />
+<p class="caption">
+Figure 4: Map of the northwest side of Madagascar. An inset map indicate the location of the study area in the Western Indian Ocean region
+</p>
+</div>
+<p>Therefore , a final map shown in figure <a href="#fig:map2">4</a> shows the locations of study sites with reference to the country and provinces and is more professional.</p>
+<div id="references" class="section level3 unnumbered">
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-sf" class="csl-entry">
+Pebesma, Edzer. 2018. <span>“<span class="nocase">Simple Features for R: Standardized Support for Spatial Vector Data</span>.”</span> <em><span>The R Journal</span></em> 10 (1): 439–46. <a href="https://doi.org/10.32614/RJ-2018-009">https://doi.org/10.32614/RJ-2018-009</a>.
+</div>
+<div id="ref-ggplot" class="csl-entry">
+Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
+</div>
+<div id="ref-tidyverse" class="csl-entry">
+Wickham, Hadley, and Maintainer Hadley Wickham. 2017. <em>Tidyverse: Easily Install and Load the ’Tidyverse’</em>. <a href="https://CRAN.R-project.org/package=tidyverse">https://CRAN.R-project.org/package=tidyverse</a>.
+</div>
+<div id="ref-cowplot" class="csl-entry">
+Wilke, Claus O. 2018. <em>Cowplot: Streamlined Plot Theme and Plot Annotations for ’Ggplot2’</em>. <a href="https://CRAN.R-project.org/package=cowplot">https://CRAN.R-project.org/package=cowplot</a>.
+</div>
+</div>
+</div>
+</div>
