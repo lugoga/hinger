@@ -1,0 +1,81 @@
+baseurl = "https://semba-blog.netlify.app/"
+languageCode = "en-us"
+title = "Masumbuko Semba's Blog"
+theme = "hugo-lithium"
+googleAnalytics = "UA-127756435-1"
+disqusShortname = "https-semba-blog-netlify-app"
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "\\.knit\\.md$", "\\.utf8\\.md$"]
+
+
+
+[permalinks]
+    post = "/:month/:day/:year/:slug/"
+    
+    
+[[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 1
+
+[[menu.main]]
+    name = "Links"
+    url = "/links/" 
+    weight = 6
+    
+[[menu.main]]
+    name = "Posts"
+    url = "/post/"
+    weight = 2
+    
+[[menu.main]]
+    name = "Projects"
+    url = "/project/"
+    weight = 4
+    
+[[menu.main]]
+    name = "Publications"
+    url = "/publication/"
+    weight = 3
+    
+[[menu.main]]
+    name = "Resume"
+    url = "/resume/"
+	weight = 6
+	
+[[menu.main]]
+    name = "Dashboard"
+    url = "/margs/"
+    weight = 5
+    
+
+[params]
+    author = "Masumbuko Semba"
+    dateFormat = "2006-01-02"
+    description = "A blog that deals with R scripting for Marine Environmental issues."
+    footer = "&copy; [Semba Masumbuko](https://semba-blog.netlify.app/) 2020"
+
+    # options for highlight.js (version, additional languages, and theme)
+    highlightjsVersion = "9.11.0"
+    highlightjsCDN = "//cdn.bootcss.com"
+    highlightjsLang = ["r", "yaml"]
+    highlightjsTheme = "github"
+
+    MathJaxCDN = "//cdn.bootcss.com"
+    MathJaxVersion = "2.7.1"
+
+    [params.logo]
+    url = "grani_logo-01.png"
+    width = 50
+    height = 50
+    alt = "Logo"
+    
+
+
+    
+    
+
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

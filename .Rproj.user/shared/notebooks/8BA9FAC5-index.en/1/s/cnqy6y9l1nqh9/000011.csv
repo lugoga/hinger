@@ -1,0 +1,7 @@
+"0","#| echo: true"
+"0","#| warning: false"
+"0","#| message: false"
+"0","#| comment: """""
+"0",""
+"0","africa = st_read(""../data/africa.gpkg"", quiet = TRUE)"
+"0",""

@@ -1,0 +1,3 @@
+"0","global = read_csv(""../data/temperature_lss_global_1990_2020_2021.csv"")"
+"2","Error: '../data/temperature_lss_global_1990_2020_2021.csv' does not exist in current working directory ('D:/semba/theHinge').
+"

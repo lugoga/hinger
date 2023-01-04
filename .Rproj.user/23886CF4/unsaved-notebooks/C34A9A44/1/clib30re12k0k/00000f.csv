@@ -1,0 +1,13 @@
+"0","ggplot()+
+  ggspatial::layer_spatial(data = temperature.raster)+
+  ggspatial::layer_spatial(data = World, fill = NA)+
+  coord_sf(crs = europe) +
+  scale_fill_gradientn(colours = mycolor3, na.value = NA,
+                       trans = scales::modulus_trans(p = .1),
+                       name = expression(T~(degree*C))) +
+  theme_bw(base_size = 12)+
+  theme(axis.title = element_blank(), panel.background = element_blank())
+"
+"2","Warning:"
+"2"," Removed 4955 rows containing missing values (geom_raster).
+"

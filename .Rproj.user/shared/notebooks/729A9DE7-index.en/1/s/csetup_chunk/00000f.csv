@@ -1,0 +1,6 @@
+"0","knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = FALSE, comment = """")"
+"0",""
+"0","load(file = ""d:/semba/theHinge/content/post/2020-02-04-vector-data-in-r/data/crans.RData"")"
+"2","Warning: cannot open compressed file 'd:/semba/theHinge/content/post/2020-02-04-vector-data-in-r/data/crans.RData', probable reason 'No such file or directory'"
+"2","Error in readChar(con, 5L, useBytes = TRUE) : cannot open the connection
+"

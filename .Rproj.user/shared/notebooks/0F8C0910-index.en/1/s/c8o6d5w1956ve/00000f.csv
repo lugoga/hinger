@@ -1,0 +1,4 @@
+"0","toka = tam.clean %>% "
+"0","  dplyr::select(lga_toka_name) %>% "
+"0","  left_join(mikoa, by = c(""lga_toka_name"" = ""lga""))"
+"0",""

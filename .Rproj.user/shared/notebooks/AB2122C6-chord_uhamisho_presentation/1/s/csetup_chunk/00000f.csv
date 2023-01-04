@@ -1,0 +1,11 @@
+"0","knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, comment = FALSE)"
+"0",""
+"0",""
+"0","require(tidyverse)"
+"0","require(chorddiag)"
+"2","Loading required package: chorddiag
+"
+"0","require(treemapify)"
+"2","Loading required package: treemapify
+"
+"0","library(RColorBrewer)"

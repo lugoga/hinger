@@ -1,0 +1,7 @@
+"0","walimu = readxl::read_excel(""../data/ELIMU_AJIRA_JUNI2022_compressed.xlsx"") %>% janitor::clean_names()"
+"0",""
+"0","walimu.clean = walimu %>% "
+"0","  drop_na()%>% "
+"0","  mutate(year = as.integer(mwaka_kuhitimu_chuo), "
+"0","         jinsi = str_to_title(jinsi)) %>% "
+"0","  relocate(year, .after = mwaka_kuhitimu_chuo)"

@@ -1,0 +1,5 @@
+"0","temperature = global %>% filter(year == 2021)"
+"0",""
+"0","temperature.raster = temperature %>% "
+"0","  select(-year) %>% "
+"0","  raster::rasterFromXYZ(crs = 4326)"

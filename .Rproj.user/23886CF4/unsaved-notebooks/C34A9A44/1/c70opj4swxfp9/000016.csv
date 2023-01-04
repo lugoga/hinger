@@ -1,0 +1,17 @@
+"0","ggplot()+
+  ggspatial::layer_spatial(data = temperature.raster)+
+  ggspatial::layer_spatial(data = World, fill = NA)+
+  coord_sf(xlim = c(-180,180), ylim = c(-70,70), crs = 4326)+
+  scale_fill_gradientn(colours = mycolor3, 
+                       trans = scales::modulus_trans(p = .1),
+                       name = expression(T~(degree*C))) +
+  theme_bw(base_size = 12)+
+  theme(axis.title = element_blank())+
+  metR::scale_x_longitude()+
+  annotation_scale(location = ""bl"", width_hint = 0.25) +
+  annotation_north_arrow(location = ""bl"", which_north = ""true"", 
+        pad_x = unit(0.75, ""in""), pad_y = unit(0.5, ""in""),
+        style = north_arrow_fancy_orienteering)
+"
+"2","Scale on map varies by more than 10%, scale bar may be inaccurate
+"

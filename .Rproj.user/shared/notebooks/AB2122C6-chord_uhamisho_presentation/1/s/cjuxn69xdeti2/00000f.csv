@@ -1,0 +1,6 @@
+"0","enda = tam.clean %>% "
+"0","  dplyr::select(lga_enda_name) %>% "
+"0","  left_join(mikoa, by = c(""lga_enda_name"" = ""lga"")) %>% "
+"0","  rename(mkoa = mikoa) %>% "
+"0","  mutate(region = mkoa) %>% "
+"0","  slice(-1)"
