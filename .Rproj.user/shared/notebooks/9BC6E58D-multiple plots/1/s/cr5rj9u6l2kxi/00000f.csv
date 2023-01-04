@@ -1,0 +1,5 @@
+"0","box = tuna %>% "
+"0","  ggplot(aes(x = seasons, y = tl)) +"
+"0","  geom_boxplot(fill = ""cyan4"")"
+"0",""
+"0","  box"

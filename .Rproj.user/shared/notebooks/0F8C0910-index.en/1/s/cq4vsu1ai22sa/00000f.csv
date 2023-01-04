@@ -1,0 +1,4 @@
+"0","mikoa = readxl::read_excel(""uhamisho_data.xlsx"", sheet = 2) %>% "
+"0","  janitor::clean_names()"
+"2","Error: `path` does not exist: ‘uhamisho_data.xlsx’
+"

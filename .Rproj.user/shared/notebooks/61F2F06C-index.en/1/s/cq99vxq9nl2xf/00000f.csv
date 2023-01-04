@@ -1,0 +1,4 @@
+"0","plot_grid(plot_grid(hist, ridges), box, rows = 2)"
+"2","Picking joint bandwidth of 7.02
+"
+"2","Warning: Argument 'rows' is deprecated. Use 'nrow' instead."

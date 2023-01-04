@@ -1,0 +1,3 @@
+"0","mikoa = readxl::read_excel(""d:/semba/vpo/data/tamisemi/uhamisho_data.xlsx"", sheet = 2) %>% "
+"0","  janitor::clean_names()"
+"0",""

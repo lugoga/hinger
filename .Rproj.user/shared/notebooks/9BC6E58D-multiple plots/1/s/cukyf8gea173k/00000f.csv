@@ -1,0 +1,1 @@
+"0","gridExtra::grid.arrange(hist, box, ridges, nrow = 2, top = ""Top Panel"", bottom = ""Bottom Panel"")"

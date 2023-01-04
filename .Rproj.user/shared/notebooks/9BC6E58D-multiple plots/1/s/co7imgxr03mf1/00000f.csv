@@ -1,0 +1,6 @@
+"0","ridges = tuna %>% "
+"0","  ggplot() +"
+"0","  ggridges::geom_density_ridges(aes(x = tl, y = seasons, fill = seasons), position = ""identity"", alpha = .6)+"
+"0","  theme(legend.position = ""none"")"
+"0",""
+"0","ridges"

@@ -13,7 +13,11 @@ description: ''
 thumbnail: ''
 ---
 
-<script src="{{< blogdown/postref >}}index.en_files/header-attrs/header-attrs.js"></script>
+<script src="{{< blogdown/postref >}}index.en_files/htmlwidgets/htmlwidgets.js"></script>
+<script src="{{< blogdown/postref >}}index.en_files/d3/d3.min.js"></script>
+<script src="{{< blogdown/postref >}}index.en_files/d3-tip/index.js"></script>
+<link href="{{< blogdown/postref >}}index.en_files/chorddiag/chorddiag.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index.en_files/chorddiag/chorddiag.js"></script>
 
 
 <p>A <em>chord</em> diagram is a graphical representation of the data in a matrix’s interrelationships. The data is arranged in a radial pattern around a circle, with the relationships between the data points commonly depicted as arcs linking the dots (Wikipedia). Each entity is represented by a fragment on the outer part of the circular layout. Then, arcs are drawn between each entities. The size of the arc is proportional to the importance of the flow.</p>
@@ -29,6 +33,11 @@ require(chorddiag)  #devtools::install_github(&quot;mattflor/chorddiag&quot;)</c
                       Arusha = c(24,67,27,15))
 
 regions</code></pre>
+<pre><code>  Mwanza Dar Tanga Arusha
+1     50  10    45     24
+2     25  55    12     67
+3      5   5    29     27
+4     12  20    20     15</code></pre>
 <p>We then convert the region data frame to matrix and assign the corresponding environmental challenges as row names</p>
 <pre class="r"><code>regions = as.matrix(regions)
 row.names(regions) = c(&quot;Climate&quot;, &quot;Waste&quot;, &quot;Pollution&quot;, &quot;Deforestation&quot;)</code></pre>
@@ -38,6 +47,8 @@ row.names(regions) = c(&quot;Climate&quot;, &quot;Waste&quot;, &quot;Pollution&q
                       groupnameFontsize = 14, 
                       groupnamePadding = 10, 
                       margin = 90, showGroupnames = T)</code></pre>
+<div id="htmlwidget-1" style="width:672px;height:480px;" class="chorddiag html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"matrix":[[0,0,0,0,50,10,45,24],[0,0,0,0,25,55,12,67],[0,0,0,0,5,5,29,27],[0,0,0,0,12,20,20,15],[50,25,5,12,0,0,0,0],[10,55,5,20,0,0,0,0],[45,12,29,20,0,0,0,0],[24,67,27,15,0,0,0,0]],"options":{"type":"bipartite","width":null,"height":null,"margin":90,"showGroupnames":true,"groupNames":["Climate","Waste","Pollution","Deforestation","Mwanza","Dar","Tanga","Arusha"],"groupColors":["#F7F7F7","#CCCCCC","#969696","#525252","#1B9E77","#D95F02","#7570B3","#E7298A"],"groupThickness":0.1,"groupPadding":0.0349065850398866,"groupnamePadding":[10,10,10,10,10,10,10,10],"groupnameFontsize":14,"groupedgeColor":null,"chordedgeColor":"#808080","categoryNames":null,"categorynamePadding":100,"categorynameFontsize":28,"showTicks":false,"tickInterval":1,"ticklabelFontsize":10,"fadeLevel":0.1,"showTooltips":true,"showZeroTooltips":true,"tooltipNames":["Climate","Waste","Pollution","Deforestation","Mwanza","Dar","Tanga","Arusha"],"tooltipFontsize":12,"tooltipUnit":"","tooltipGroupConnector":" &#x25B6; ","precision":"null","clickAction":null,"clickGroupAction":null}},"evals":[],"jsHooks":[]}</script>
 <p>Sometimes we might not be interested with default colors and wish to define our own colors. Since we have four groups, let’s define the color and use it to make similar plot but with a different flavour from the color</p>
 <pre class="r"><code>groupColors &lt;- c(&quot;#000000&quot;, &quot;#FFDD89&quot;, &quot;#957244&quot;, &quot;#F26223&quot;)
 
@@ -48,6 +59,8 @@ regions %&gt;% chorddiag(type = &quot;bipartite&quot;,
                       groupnamePadding = 10, 
                       margin = 90, 
                       showGroupnames = T)</code></pre>
+<div id="htmlwidget-2" style="width:672px;height:480px;" class="chorddiag html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2">{"x":{"matrix":[[0,0,0,0,50,10,45,24],[0,0,0,0,25,55,12,67],[0,0,0,0,5,5,29,27],[0,0,0,0,12,20,20,15],[50,25,5,12,0,0,0,0],[10,55,5,20,0,0,0,0],[45,12,29,20,0,0,0,0],[24,67,27,15,0,0,0,0]],"options":{"type":"bipartite","width":null,"height":null,"margin":90,"showGroupnames":true,"groupNames":["Climate","Waste","Pollution","Deforestation","Mwanza","Dar","Tanga","Arusha"],"groupColors":["#000000","#FFDD89","#957244","#F26223"],"groupThickness":0.1,"groupPadding":0.0349065850398866,"groupnamePadding":[10,10,10,10,10,10,10,10],"groupnameFontsize":14,"groupedgeColor":null,"chordedgeColor":"#808080","categoryNames":null,"categorynamePadding":100,"categorynameFontsize":28,"showTicks":false,"tickInterval":1,"ticklabelFontsize":10,"fadeLevel":0.1,"showTooltips":true,"showZeroTooltips":true,"tooltipNames":["Climate","Waste","Pollution","Deforestation","Mwanza","Dar","Tanga","Arusha"],"tooltipFontsize":12,"tooltipUnit":"","tooltipGroupConnector":" &#x25B6; ","precision":"null","clickAction":null,"clickGroupAction":null}},"evals":[],"jsHooks":[]}</script>
 <p>Chord diagrams can also be used to show transition matrices. Let’s pretend that each row in the dummy data below represents the number of customers each company has this year. Let’s imagine, though, that some of your clients decide to switch firms next year (shown in the columns). You may hover your mouse over the visualization to check which companies are losing the most clients and which are keeping the most.</p>
 <pre class="r"><code>df = data_frame(`Company A` = c(800, 200, 100, 50, 140, 200, 140),
                 `Company B` = c(100, 2000, 300, 400, 50, 0, 290),
@@ -57,6 +70,17 @@ regions %&gt;% chorddiag(type = &quot;bipartite&quot;,
                 `Company F` = c(500, 400, 100, 300, 250, 4500, 140),
                 `Company G` = c(300, 50, 0, 150, 600, 250, 7000))
 df</code></pre>
+<pre><code># A tibble: 7 x 7
+  `Company A` `Company B` `Company C` `Company D` `Company E` Company ~1 Compa~2
+        &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;
+1         800         100         200         500         600        500     300
+2         200        2000         500         200         300        400      50
+3         100         300        4000         300         150        100       0
+4          50         400          80        5000         600        300     150
+5         140          50         120         250        6000        250     600
+6         200           0         320         140          30       4500     250
+7         140         290         600         450           0        140    7000
+# ... with abbreviated variable names 1: `Company F`, 2: `Company G`</code></pre>
 <pre class="r"><code>df = as.matrix(df)
 row.names(df) = c(colnames(df))</code></pre>
 <pre class="r"><code>chorddiag(data = df, 
@@ -65,6 +89,8 @@ row.names(df) = c(colnames(df))</code></pre>
           groupnameFontsize = 14, 
           groupnamePadding = 10, 
           margin = 90)</code></pre>
+<div id="htmlwidget-3" style="width:672px;height:480px;" class="chorddiag html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3">{"x":{"matrix":[[800,100,200,500,600,500,300],[200,2000,500,200,300,400,50],[100,300,4000,300,150,100,0],[50,400,80,5000,600,300,150],[140,50,120,250,6000,250,600],[200,0,320,140,30,4500,250],[140,290,600,450,0,140,7000]],"options":{"type":"directional","width":null,"height":null,"margin":90,"showGroupnames":true,"groupNames":["Company A","Company B","Company C","Company D","Company E","Company F","Company G"],"groupColors":["#1B9E77","#D95F02","#7570B3","#E7298A","#66A61E","#E6AB02","#A6761D"],"groupThickness":0.1,"groupPadding":0.0349065850398866,"groupnamePadding":[10,10,10,10,10,10,10],"groupnameFontsize":14,"groupedgeColor":null,"chordedgeColor":"#808080","categoryNames":null,"categorynamePadding":100,"categorynameFontsize":28,"showTicks":false,"tickInterval":100,"ticklabelFontsize":10,"fadeLevel":0.1,"showTooltips":true,"showZeroTooltips":true,"tooltipNames":["Company A","Company B","Company C","Company D","Company E","Company F","Company G"],"tooltipFontsize":12,"tooltipUnit":"","tooltipGroupConnector":" &#x25B6; ","precision":"null","clickAction":null,"clickGroupAction":null}},"evals":[],"jsHooks":[]}</script>
 <div id="bonus" class="section level2">
 <h2>Bonus</h2>
 <p>The bonus in this post is the chord diagram using dataset of estimates of global bilateral migration Flows by Gender between 1960 and 2015 published by <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/imre.12327">Gui J. Abel</a></p>
@@ -82,4 +108,12 @@ data %&gt;%
             groupnameFontsize = 14, 
             groupnamePadding = 10, 
             margin = 90)</code></pre>
+<div id="htmlwidget-4" style="width:672px;height:480px;" class="chorddiag html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4">{"x":{"matrix":[[3.142471,0,2.107883,0,0.540887,0.155988,0,0,0,0.673004],[0,1.630997,0.601265,0,0.97306,0.333608,0,0.380388,0,0.869311],[0,0,2.401476,0,0,0,0,0,0,0],[0,0,1.762587,0.879198,3.627847,0,0,0,0,0],[0,0,1.215929,0.276908,0,0,0,0,0,0],[0,0,0.17037,0,0,0.190706,0,0,0,0],[0,0.525881,1.390272,0,1.508008,0.34742,1.307907,0,0,4.902081],[0,0.145264,0.468762,0,1.057904,0.278746,0,0.781316,0,0],[0,0,0.60923,0,0,0,0,0,1.870501,0],[0,0,0.449623,0,0.169274,0,0,0,0,0.927243]],"options":{"type":"directional","width":null,"height":null,"margin":90,"showGroupnames":true,"groupNames":["Africa","East Asia","Europe","Latin Ame.","North Ame.","Oceania","South Asia","South East Asia","Soviet Union","West.Asia"],"groupColors":["#440154FF","#482878FF","#3E4A89FF","#31688EFF","#26828EFF","#1F9E89FF","#35B779FF","#6DCD59FF","#B4DE2CFF","#FDE725FF"],"groupThickness":0.1,"groupPadding":0.0349065850398866,"groupnamePadding":[10,10,10,10,10,10,10,10,10,10],"groupnameFontsize":14,"groupedgeColor":null,"chordedgeColor":"#808080","categoryNames":null,"categorynamePadding":100,"categorynameFontsize":28,"showTicks":false,"tickInterval":0.1,"ticklabelFontsize":10,"fadeLevel":0.1,"showTooltips":true,"showZeroTooltips":true,"tooltipNames":["Africa","East Asia","Europe","Latin Ame.","North Ame.","Oceania","South Asia","South East Asia","Soviet Union","West.Asia"],"tooltipFontsize":12,"tooltipUnit":"","tooltipGroupConnector":" &#x25B6; ","precision":"null","clickAction":null,"clickGroupAction":null}},"evals":[],"jsHooks":[]}</script>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-12"></span>
+<img src="{{< blogdown/postref >}}index.en_files/figure-html/fig1.jpeg" alt="leo" width="288" />
+<p class="caption">
+Figure 1: leo
+</p>
+</div>
 </div>

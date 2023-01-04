@@ -1,0 +1,16 @@
+"0","require(tidyverse)"
+"0","require(patchwork)"
+"2","Loading required package: patchwork
+"
+"0","require(cowplot)"
+"2","Loading required package: cowplot
+"
+"2","
+Attaching package: ‘cowplot’
+
+"
+"2","The following object is masked from ‘package:patchwork’:
+
+    align_plots
+
+"

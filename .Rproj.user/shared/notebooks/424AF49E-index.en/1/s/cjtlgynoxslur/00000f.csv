@@ -1,0 +1,2 @@
+"0","regions = as.matrix(regions)"
+"0","row.names(regions) = c(""Climate"", ""Waste"", ""Pollution"", ""Deforestation"")"

@@ -1,0 +1,2 @@
+"0","# Load dataset from github"
+"0","data <- read.table(""https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/13_AdjacencyDirectedWeighted.csv"", header=TRUE)"
