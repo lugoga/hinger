@@ -53,7 +53,7 @@ Params:
   toc: no
   twitter_cards: yes
   widgets:
-    recent_num: 5
+    recent_num: 10
     tags_counter: yes
 menu:
   main:
